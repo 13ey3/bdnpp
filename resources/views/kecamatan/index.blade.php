@@ -42,7 +42,7 @@
 
     <div class="modal fade" id="modalTambahKecamatan" data-coreui-backdrop="static" data-coreui-keyboard="false"
         tabindex="-1" aria-labelledby="staticBackdropLiveLabel" aria-hidden="true">
-        <div class="modal-dialog modal-sm">
+        <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header bg-secondary">
                     <h5 class="modal-title" id="staticBackdropLiveLabel">Tambah Kecamatan</h5>

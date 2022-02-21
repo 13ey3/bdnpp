@@ -14,7 +14,7 @@ class KelurahanController extends Controller
 {
     public function index()
     {
-        return view('kecamatan.index', [
+        return view('kelurahan.index', [
             'pemda' => Pemda::first(),
             'kecamatan' => Kecamatan::get()
         ]);

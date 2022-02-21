@@ -12,23 +12,18 @@
     <div class="card mb-4">
         <div class="card-header">
             {{ __('Dafatr Desa/Kelurahan') }}
-            @can('client-create')
-                <a class="btn btn-success float-end" href="{{ route('clients.create') }}"> Create New Client</a>
+            @can('kelurahan-tambah')
+                <button class="btn btn-success float-end" type="button" data-coreui-toggle="modal"
+                    data-coreui-target="#modalTambahKelurahan"><svg class="icon me-0">
+                        <use xlink:href="{{ asset('icons/coreui.svg#cil-plus') }}"></use>
+                    </svg> Tambah</button>
             @endcan
         </div>
 
         <div class="card-body">
-            @if ($message = Session::get('success'))
-                <div class="alert alert-success">
-                    <p>{{ $message }}</p>
-                </div>
-            @endif
-
-            <div class="row">
-                <div class="col-lg-12">
-                    <div id="response"></div>
-                </div>
-            </div>
+            <input type="hidden" value="{{ is_null($pemda) ? '' : $pemda->kd_provinsi }}" id="kd_provinsi">
+            <input type="hidden" value="{{ is_null($pemda) ? '' : $pemda->kd_dati }}" id="kd_dati">
+            <div id="alert_message"></div>
 
             <table class="table table-striped table-bordered table-sm" id="kecamatan-table">
                 <thead>
@@ -45,23 +40,23 @@
         </div>
     </div>
 
-    <div class="modal fade" id="modalTambahKecamatan" data-coreui-backdrop="static" data-coreui-keyboard="false"
+    <div class="modal fade" id="modalTambahKelurahan" data-coreui-backdrop="static" data-coreui-keyboard="false"
         tabindex="-1" aria-labelledby="staticBackdropLiveLabel" aria-hidden="true">
-        <div class="modal-dialog modal-sm">
+        <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header bg-secondary">
-                    <h5 class="modal-title" id="staticBackdropLiveLabel">Tambah Kecamatan</h5>
+                    <h5 class="modal-title" id="staticBackdropLiveLabel">Tambah Desa/Kelurahan</h5>
                     <button class="btn-close" type="button" data-coreui-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <form id="formsTambahKecamatan">
                         <div class="mb-1">
-                            <label class="col-form-label" for="recipient-name">Kode Kecamatan</label>
-                            <input class="form-control" id="kd_kecamatan" name="kd_kecamatan" type="text">
+                            <label class="col-form-label" for="recipient-name">Kode Desa/Kelurahan</label>
+                            <input class="form-control" id="kd_kelurahan" name="kd_kelurahan" type="text">
                         </div>
                         <div class="mb-3">
-                            <label class="col-form-label" for="recipient-name">Nama Kecamatan</label>
-                            <input class="form-control" id="nama_kecamatan" name="nama_kecamatan" type="text">
+                            <label class="col-form-label" for="recipient-name">Nama Desa/Kelurahan</label>
+                            <input class="form-control" id="nama_kelurahan" name="nama_kelurahan" type="text">
                         </div>
                     </form>
                 </div>
