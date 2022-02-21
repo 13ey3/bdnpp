@@ -21,22 +21,32 @@
                 </div>
             @endif
 
-            {!! Form::model($role, ['method' => 'PATCH','route' => ['roles.update', $role->id]]) !!}
+            {!! Form::model($role, ['method' => 'PATCH', 'route' => ['roles.update', $role->id]]) !!}
             <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
                         <strong>Name:</strong>
-                        {!! Form::text('name', null, array('placeholder' => 'Name','class' => 'form-control')) !!}
+                        {!! Form::text('name', null, ['placeholder' => 'Name', 'class' => 'form-control']) !!}
                     </div>
                 </div>
-                <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="col-xs-12 col-sm-12 col-md-12 mt-2">
                     <div class="form-group">
-                        <strong>Permission:</strong>
-                        <br/>
-                        @foreach($permission as $value)
-                            <label>{{ Form::checkbox('permission[]', $value->id, in_array($value->id, $rolePermissions) ? true : false, array('class' => 'name')) }}
+                        <div class="fw-bold mb-1">Permission</div>
+                        @php
+                            $judul = '';
+                        @endphp
+
+                        @foreach ($permission as $value)
+                            @php
+                                $roleExp = explode('-', $value->name);
+                                if ($judul !== $roleExp[0]) {
+                                    $judul = $roleExp[0];
+                                    echo '<span class="fw-semibold">' . $judul . ':</span><br>';
+                                } 
+                            @endphp
+                            <label>{{ Form::checkbox('permission[]', $value->id, in_array($value->id, $rolePermissions) ? true : false, ['class' => 'name']) }}
                                 {{ $value->name }}</label>
-                            <br/>
+                            <br />
                         @endforeach
                     </div>
                 </div>
