@@ -21,17 +21,9 @@
         </div>
 
         <div class="card-body">
-            @if ($message = Session::get('success'))
-                <div class="alert alert-success">
-                    <p>{{ $message }}</p>
-                </div>
-            @endif
-
-            <div class="row">
-                <div class="col-lg-12">
-                    <div id="response"></div>
-                </div>
-            </div>
+            <input type="hidden" value="{{ is_null($pemda) ? '' : $pemda->kd_provinsi }}" id="kd_provinsi">
+            <input type="hidden" value="{{ is_null($pemda) ? '' : $pemda->kd_dati }}" id="kd_dati">
+            <div id="alert_message"></div>
 
             <table class="table table-striped table-bordered table-sm" id="kecamatan-table">
                 <thead>
@@ -50,23 +42,28 @@
 
     <div class="modal fade" id="modalTambahKecamatan" data-coreui-backdrop="static" data-coreui-keyboard="false"
         tabindex="-1" aria-labelledby="staticBackdropLiveLabel" aria-hidden="true">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-sm">
             <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="staticBackdropLiveLabel">Modal title</h5>
+                <div class="modal-header bg-secondary">
+                    <h5 class="modal-title" id="staticBackdropLiveLabel">Tambah Kecamatan</h5>
                     <button class="btn-close" type="button" data-coreui-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form id="formsTambahKecamatan">
+                    <form id="formTambahKecamatan" action="" method="POST">
+                        <div class="mb-1">
+                            <label class="col-form-label" for="recipient-name">Kode Kecamatan</label>
+                            <input class="form-control" id="kd_kecamatan" name="kd_kecamatan" type="text">
+                            <div class="invalid-feedback" id="kd_kecamatan_error"></div>
+                        </div>
                         <div class="mb-3">
-                            <label class="col-form-label" for="recipient-name">Recipient:</label>
-                            <input class="form-control" id="recipient-name" type="text">
+                            <label class="col-form-label" for="recipient-name">Nama Kecamatan</label>
+                            <input class="form-control" id="nama_kecamatan" name="nama_kecamatan" type="text">
                         </div>
                     </form>
                 </div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-coreui-dismiss="modal">Close</button>
-                    <button class="btn btn-primary" type="button">Simpan</button>
+                    <button class="btn btn-primary" type="button" id="btnSimpan">Simpan</button>
                 </div>
             </div>
         </div>
@@ -75,23 +72,37 @@
 
 @push('scripts')
     <script>
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+
+        const getDatas = (id, urlTarget) => {
+            return fetch(`${urlTarget}/${id}.json`)
+                .then(res => res.json())
+                .then(data => data)
+                .catch(err => console.log(err))
+        }
+
         $(document).ready(function() {
             $('#kecamatan-table').DataTable({
                 processing: true,
                 serverSide: true,
-                ajax: '{!! route('clients.getDT') !!}',
+                ajax: '{!! route('kecamatan.getDT') !!}',
                 columns: [{
                         data: 'id',
                         name: 'id',
                         className: 'text-center'
                     },
                     {
-                        data: 'name',
-                        name: 'name'
+                        data: 'kd_kecamatan',
+                        name: 'kd_kecamatan',
+                        className: 'text-center'
                     },
                     {
-                        data: 'detail',
-                        name: 'detail'
+                        data: 'nama_kecamatan',
+                        name: 'nama_kecamatan'
                     },
                     {
                         data: 'action',
@@ -134,6 +145,86 @@
                     });
                 }
             });
+
+            $("input[name=kd_kecamatan]").on('change', async () => {
+                let idKecmanatan = $("#kd_provinsi").val() + $("#kd_dati").val() + $("#kd_kecamatan")
+                    .val();
+                console.log($("#kd_provinsi").val());
+                let a = await getDatas(idKecmanatan,
+                    '{{ url('wilayah-indonesia/district') }}')
+                if (a !== undefined) {
+                    $('#nama_kecamatan').val(a.name)
+                } else {
+                    $('#nama_kecamatan').val('')
+                }
+            })
+        });
+
+        $("#btnSimpan").click(function(e) {
+
+            e.preventDefault();
+
+            var kd_kecamatan = $("input[name=kd_kecamatan]").val();
+            var nama_kecamatan = $("input[name=nama_kecamatan]").val();
+            var url = '{{ url('kecamatan/store') }}';
+
+            $.ajax({
+                url: url,
+                method: 'POST',
+                data: {
+                    kd_kecamatan: kd_kecamatan,
+                    nama_kecamatan: nama_kecamatan
+                },
+                success: function(response) {
+                    console.log();
+                    showAlert(response.success, 'success', document.getElementById('alert_message'));
+                    $("#modalTambahKecamatan").modal('hide');
+                },
+                error: function(response) {
+                    let errors = response.responseJSON.errors
+                    $("#modalTambahKecamatan").modal('hide');
+
+                    if (typeof errors.nama_kecamatan !== undefined) {
+                        showAlert('Nama Kecamatan tidak boleh kosong!', 'warning', document
+                            .getElementById('alert_message'));
+                    }
+
+                    if (typeof errors.kd_kecamatan !== undefined) {
+                        showAlert('Nama Kecamatan tidak boleh kosong, berisi 3 digit san berisi angka!',
+                            'warning', document.getElementById('alert_message'));
+                    }
+
+                }
+            });
+
+            document.getElementById('kd_kecamatan').addEventListener('blur', async function() {
+
+
+            })
+
+
+
+
+            function showAlert(message, type, target) {
+                let wrapper = document.createElement('div')
+
+                wrapper.innerHTML = `<div class="alert alert-${type} alert-dismissible" role="alert">
+                                    <div class="fw-semibold">${message}</div>
+                                    <button class="btn-close" type="button" data-coreui-dismiss="alert" aria-label="Close"></button>
+                                </div>`;
+                target.append(wrapper);
+                hideAlert()
+            }
+
+            function hideAlert() {
+                let alrerts = document.querySelectorAll('.alert');
+
+                setTimeout(() => {
+                    alrerts.forEach(alert => {
+                        alert.remove()
+                    });
+                }, 3000);
+            }
         });
     </script>
 @endpush

@@ -134,8 +134,8 @@
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <script src="https://cdn.datatables.net/v/bs4/dt-1.11.3/datatables.min.js"></script>
     <script type="text-javascript">
-
-    </script>
+       
+        </script>
     @stack('scripts')
     @yield('script')
 </body>

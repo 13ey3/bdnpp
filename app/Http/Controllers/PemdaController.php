@@ -34,6 +34,11 @@ class PemdaController extends Controller
                 $attr['logo_pemda'] = $rename;
             }
 
+            $attr['telp_skpd'] = $request->telp_skpd;
+            $attr['kd_pos_skpd'] = $request->kd_pos_skpd;
+            $attr['email_skpd'] = $request->email_skpd;
+            $attr['website_skpd'] = $request->website_skpd;
+
             if (isset($request->id)) {
                 Pemda::where('id', $request->id)->update($attr);
             } else {
@@ -44,7 +49,7 @@ class PemdaController extends Controller
             dd($th);
         }
 
-        return redirect()->route('pemerintah-daerah')
+        return redirect()->back()
             ->with('success', 'Data berhasil di simpan');
     }
 }

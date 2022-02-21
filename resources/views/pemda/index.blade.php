@@ -13,10 +13,15 @@
         <div class="card-header">
             {{ __('Pemerintah Daearah ') }}
         </div>
-        @if (isset($message))
-            @dump($message ?? 'aman')
-        @endif
+
         <div class="card-body">
+            @if ($message = Session::get('success'))
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <div class="fw-semibold">{{ $message }}</div>
+                    <button class="btn-close" type="button" data-coreui-dismiss="alert" aria-label="Close"></button>
+                </div>
+            @endif
+            
             <form action="{{ url('pemerintah-daerah/create_update') }}" id="formPemda" method="POST"
                 enctype="multipart/form-data">
                 @csrf
@@ -141,7 +146,7 @@
                 <div class="row mb-2">
                     <div class="text-center">
                         <img class="img-thumbnail" id="logoImg"
-                            src="{{ is_null($pemda->logo_pemda) ? asset('images/logo-default.png') : asset('uploads/' . $pemda->logo_pemda) }}"
+                            src="{{ is_null($pemda) ? asset('images/logo-default.png') : asset('uploads/' . $pemda->logo_pemda) }}"
                             alt="" style="width: 200px;">
                     </div>
                 </div>
@@ -186,12 +191,5 @@
                 alert('Data tidak ditemukan! isi manual')
             }
         })
-
-        function messageRes() {
-            @if (isset($success))
-                alert($success);
-            @endif
-        }
-        messageRes()
     </script>
 @endpush

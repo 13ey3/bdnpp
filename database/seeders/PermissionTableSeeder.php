@@ -37,6 +37,14 @@ class PermissionTableSeeder extends Seeder
             'ressource-tambah',
             'ressource-edit',
             'ressource-hapus',
+            'pegawai-lihat',
+            'pegawai-tambah',
+            'pegawai-edit',
+            'pegawai-hapus',
+            'perekaman-lihat',
+            'perekaman-tambah',
+            'perekaman-edit',
+            'perekaman-hapus',
         ];
 
         foreach ($permissions as $permission) {
