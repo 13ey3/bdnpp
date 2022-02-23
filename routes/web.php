@@ -4,6 +4,7 @@ use App\Http\Controllers\ClientController;
 use App\Http\Controllers\KecamatanController;
 use App\Http\Controllers\KelurahanController;
 use App\Http\Controllers\PemdaController;
+use App\Http\Controllers\PerekamanDataController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
 use App\Models\Setting\Kecamatan;
@@ -47,6 +48,7 @@ Route::middleware('auth')->group(function () {
 
     Route::prefix('perekaman-data')->group(function () {
         Route::get('', fn () => view('perekaman.index'))->name('perekaman-data');
+        Route::get('create', [PerekamanDataController::class, 'create'])->name('perekaman-data.create');
     });
 
     Route::prefix('informasi')->group(function () {
@@ -60,22 +62,25 @@ Route::middleware('auth')->group(function () {
 
 
     Route::prefix('kecamatan')->group(function () {
-        Route::get('', [KecamatanController::class, 'index'])->name('kecamatan');
-        Route::post('store', [KecamatanController::class, 'store'])->name('kecamatan.store');
-        Route::post('update/{id}', [KecamatanController::class, 'update'])->name('kecamatan.update');
-        Route::delete('update/{id}', [KecamatanController::class, 'destroy'])->name('kecamatan.delete');
+        Route::get('', [KecamatanController::class, 'index'])->name('kecamatan')->middleware('permission:kecamatan-lihat');
+        Route::post('store', [KecamatanController::class, 'store'])->name('kecamatan.store')->middleware('permission:kecamatan-tambah');
+        Route::post('getKecamatanById', [KecamatanController::class, 'getKecamatanById'])->name('kecamatan.getById');
+        Route::post('update', [KecamatanController::class, 'update'])->name('kecamatan.update')->middleware('permission:kecamatan-edit');
+        Route::post('delete', [KecamatanController::class, 'destroy'])->name('kecamatan.delete');
         Route::get('getDT', [KecamatanController::class, 'getDT'])->name('kecamatan.getDT');
     });
 
     Route::prefix('kelurahan')->group(function () {
-        Route::get('', [KelurahanController::class, 'index'])->name('kelurahan');
-        Route::post('store', [KelurahanController::class, 'store'])->name('kelurahan.store');
-        Route::post('update/{id}', [KelurahanController::class, 'update'])->name('kelurahan.update');
-        Route::delete('update/{id}', [KecamKelurahanControlleratanController::class, 'destroy'])->name('kelurahan.delete');
+        Route::get('', [KelurahanController::class, 'index'])->name('kelurahan')->middleware('permission:kelurahan-lihat');
+        Route::post('store', [KelurahanController::class, 'store'])->name('kelurahan.store')->middleware('permission:kelurahan-tambah');
+        Route::post('getKecamatanById', [KelurahanController::class, 'getKecamatanById'])->name('kelurahan.getById');
+        Route::post('update', [KelurahanController::class, 'update'])->name('kelurahan.update')->middleware('permission:kelurahan-edit');
+        Route::post('delete', [KelurahanController::class, 'destroy'])->name('kelurahan.delete');
         Route::get('getDT', [KelurahanController::class, 'getDT'])->name('kelurahan.getDT');
     });
 
     Route::prefix('resource')->group(function () {
         Route::get('', fn () => view('resource.index'))->name('resource');
+        Route::get('getDT', [KelurahanController::class, 'getDT'])->name('kelurahan.getDT');
     });
 });

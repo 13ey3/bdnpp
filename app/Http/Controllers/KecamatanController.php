@@ -37,17 +37,56 @@ class KecamatanController extends Controller
         return response()->json(['success' => 'Data Berhasil di simpan.'], 200);
     }
 
+    public function update(Request $request)
+    {
+        request()->validate([
+            'kd_kecamatan' => 'required|numeric|digits:3',
+            'nama_kecamatan' => 'required',
+        ]);
+
+        $attr = [
+            'kd_kecamatan' => $request->kd_kecamatan,
+            'nama_kecamatan' => Str::upper($request->nama_kecamatan),
+        ];
+
+        try {
+            Kecamatan::where('id', $request->id)->update($attr);
+        } catch (\Throwable $th) {
+            Log::error('ERROR : ' . $th);
+        }
+
+        return response()->json(['success' => 'Data Berhasil di update.'], 200);
+    }
+
+    public function getKecamatanById(Request $request)
+    {
+        $data = Kecamatan::firstWhere('id', $request->id);
+
+        return response()->json($data, 200);
+    }
+
+    public function destroy(Request $request) {
+        try {
+            Kecamatan::where('id', $request->id)
+                ->delete();
+            return response()->json(['status'=>'1', 'msg'=>'Deleted successfully!']);
+        } catch (\Throwable $th) {
+            Log::error('ERROR :'. $th);
+            return response()->json(['status'=>'1', 'msg'=>$th]);
+        }
+    }
+
     public function getDT()
     {
-        $data = Kecamatan::latest()->get();
+        $data = Kecamatan::orderBy('kd_kecamatan')->get();
         return DataTables::of($data)
             ->addIndexColumn()
             ->addColumn('action', function ($row) {
 
-                $btn = ' <a class="btn btn-info btn-sm" href="' . route('clients.show', $row->id) . '">Show</a> ';
+                $btn = ' ';
 
                 if (auth()->user()->can('kecamatan-edit')) {
-                    $btn .= '<a class="btn btn-primary btn-sm" href="' . route('clients.edit', $row->id) . '">Edit</a>  ';
+                    $btn .= '<a href="javascript:void(0)" data-id="' . $row->id . '" class="edit btn btn-primary btn-sm" >Edit</a>  ';
                 }
 
                 if (auth()->user()->can('kecamatan-hapus')) {

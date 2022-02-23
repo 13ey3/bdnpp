@@ -13,22 +13,11 @@
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <link href="https://cdn.datatables.net/v/bs4/dt-1.11.3/datatables.min.css" rel="stylesheet" />
     <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
+    <link href="{{ asset('extend/jquery-smartwizard/dist/css/smart_wizard_all.min.css') }}" rel="stylesheet"
+        type="text/css" />
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- Global site tag (gtag.js) - Google Analytics-->
-    <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-118965717-3"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-
-        function gtag() {
-            dataLayer.push(arguments);
-        }
-        gtag('js', new Date());
-        // Shared ID
-        gtag('config', 'UA-118965717-3');
-        // Bootstrap ID
-        gtag('config', 'UA-118965717-5');
-    </script>
 </head>
 
 <body>
@@ -131,11 +120,13 @@
     {{-- <script src="{{ asset('js/app.js') }}"></script> --}}
     <script src="{{ asset('js/coreui.js') }}"></script>
     <script src="{{ asset('js/custome.js') }}"></script>
+    <script src="{{ asset('extend/jquery-smartwizard/dist/js/jquery.smartWizard.min.js') }}" type="text/javascript">
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <script src="https://cdn.datatables.net/v/bs4/dt-1.11.3/datatables.min.js"></script>
     <script type="text-javascript">
-       
-        </script>
+
+    </script>
     @stack('scripts')
     @yield('script')
 </body>

@@ -13,7 +13,7 @@
         <div class="card-header">
             {{ __('Daftar Perekaman Data ') }}
             @can('client-create')
-                <a class="btn btn-success float-end" href="{{ route('clients.create') }}"> Create New Client</a>
+                <a class="btn btn-success float-end" href="{{ route('perekaman-data.create') }}"> Entri</a>
             @endcan
         </div>
 

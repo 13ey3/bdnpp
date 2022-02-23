@@ -6,27 +6,28 @@
             <div class="card col-md-5 text-white bg-primary py-5">
                 <div class="card-body text-center">
                     <div>
-                        <h2>{{ config('app.name', 'Laravel') }}</h2>
+                        <h2 class="fw-bold">{{ config('app.name', 'Laravel') }}</h2>
                         <blockquote class="blockquote">
                             <p>{{ config('app.akronim') }}</p>
                         </blockquote>
+                        <img src="{{ asset('images/logo-light.png') }}" class="p-0 m-0" style="width: 70%" alt="logo">
                         {{-- <a href="{{ route('register') }}"
                         class="btn btn-lg btn-outline-light mt-3">{{ __('Register') }}</a> --}}
                     </div>
                 </div>
             </div>
             <div class="card col-md-7 p-4 mb-0">
-                <div class="card-body">
+                <div class="card-body pt-5">
                     <h1>{{ __('Login') }}</h1>
                     <form action="{{ route('login') }}" method="POST">
                         @csrf
                         <div class="input-group mb-3"><span class="input-group-text">
                                 <svg class="icon">
-                                    <use xlink:href="{{ asset('icons/coreui.svg#cil-envelope-open') }}"></use>
+                                    <use xlink:href="{{ asset('icons/coreui.svg#cil-user') }}"></use>
                                 </svg></span>
-                            <input class="form-control @error('email') is-invalid @enderror" type="text" name="email"
-                                placeholder="{{ __('Email') }}" required autofocus>
-                            @error('email')
+                            <input class="form-control @error('username') is-invalid @enderror" type="text" name="username"
+                                placeholder="{{ __('Username') }}" required autofocus>
+                            @error('username')
                                 <div class="invalid-feedback">
                                     {{ $message }}
                                 </div>
