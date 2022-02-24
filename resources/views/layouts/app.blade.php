@@ -13,8 +13,13 @@
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <link href="https://cdn.datatables.net/v/bs4/dt-1.11.3/datatables.min.css" rel="stylesheet" />
     <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
-    <link href="{{ asset('extend/jquery-smartwizard/dist/css/smart_wizard_all.min.css') }}" rel="stylesheet"
+    {{-- <link href="{{ asset('extend/jquery-smartwizard/dist/css/smart_wizard_all.min.css') }}" rel="stylesheet"
+        type="text/css" /> --}}
+    <!-- Include SmartWizard CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/smartwizard@5/dist/css/smart_wizard_all.min.css" rel="stylesheet"
         type="text/css" />
+
+
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- Global site tag (gtag.js) - Google Analytics-->
@@ -23,15 +28,16 @@
 <body>
     <div class="sidebar sidebar-dark sidebar-fixed" id="sidebar">
         <div class="sidebar-brand d-none d-md-flex">
-            @if (isset($logo))
+
+            @if (is_null(logo_pemda()))
                 <svg class="sidebar-brand-full" width="118" height="46" alt="CoreUI Logo">
-                    <use xlink:href="{{ asset('icons/brand.svg#full') }}"></use>
+                    <use xlink:href="{{ url('brand.svg#full') }}"></use>
                 </svg>
                 <svg class="sidebar-brand-narrow" width="46" height="46" alt="CoreUI Logo">
-                    <use xlink:href="{{ asset('icons/brand.svg#signet') }}"></use>
+                    <use xlink:href="{{ url('brand.svg#signet') }}"></use>
                 </svg>
             @else
-                <img src="{{ asset('images/logo-default.png') }}" class="sidebar-brand-logo" alt="...">
+                <img src="{{ asset('uploads/' . logo_pemda()) }}" class="sidebar-brand-logo" alt="...">
                 <span class="sidebar-brand-title">{{ config('app.name') }}</span>
             @endif
         </div>
@@ -44,7 +50,7 @@
                 <button class="header-toggler px-md-0 me-md-3" type="button"
                     onclick="coreui.Sidebar.getInstance(document.querySelector('#sidebar')).toggle()">
                     <svg class="icon icon-lg">
-                        <use xlink:href="{{ asset('icons/coreui.svg#cil-menu') }}"></use>
+                        <use xlink:href="{{ asset('coreui.svg#cil-menu') }}"></use>
                     </svg>
                 </button>
                 <a class="header-brand d-md-none" href="#">
@@ -68,7 +74,7 @@
                         <div class="dropdown-menu dropdown-menu-end pt-0">
                             <a class="dropdown-item" href="{{ route('profile.show') }}">
                                 <svg class="icon me-2">
-                                    <use xlink:href="{{ asset('icons/coreui.svg#cil-user') }}"></use>
+                                    <use xlink:href="{{ asset('coreui.svg#cil-user') }}"></use>
                                 </svg>
                                 {{ __('My profile') }}
                             </a>
@@ -77,7 +83,7 @@
                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                     onclick="event.preventDefault(); this.closest('form').submit();">
                                     <svg class="icon me-2">
-                                        <use xlink:href="{{ asset('icons/coreui.svg#cil-account-logout') }}"></use>
+                                        <use xlink:href="{{ asset('coreui.svg#cil-account-logout') }}"></use>
                                     </svg>
                                     {{ __('Logout') }}
                                 </a>
@@ -92,14 +98,6 @@
                     @yield('breadcrumb')
                 </nav>
             </div>
-            {{-- <div class="container-fluid"> --}}
-            {{-- <nav aria-label="breadcrumb"> --}}
-            {{-- <ol class="breadcrumb my-0 ms-2"> --}}
-            {{-- <?php // isset($breadcrumb) ? $breadcrumb : ''
-?> --}}
-            {{-- </ol> --}}
-            {{-- </nav> --}}
-            {{-- </div> --}}
         </header>
 
         <div class="body flex-grow-1 px-3">

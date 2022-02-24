@@ -10,7 +10,7 @@
 
                     <div class="input-group mb-3"><span class="input-group-text">
                     <svg class="icon">
-                      <use xlink:href="{{ asset('icons/coreui.svg#cil-envelope-open') }}"></use>
+                      <use xlink:href="{{ asset('coreui.svg#cil-envelope-open') }}"></use>
                     </svg></span>
                         <input class="form-control @error('email') is-invalid @enderror" type="email"
                                id="email" name="email" placeholder="{{ __('Email') }}">

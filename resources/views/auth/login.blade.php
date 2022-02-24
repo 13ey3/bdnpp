@@ -23,7 +23,7 @@
                         @csrf
                         <div class="input-group mb-3"><span class="input-group-text">
                                 <svg class="icon">
-                                    <use xlink:href="{{ asset('icons/coreui.svg#cil-user') }}"></use>
+                                    <use xlink:href="{{ asset('coreui.svg#cil-user') }}"></use>
                                 </svg></span>
                             <input class="form-control @error('username') is-invalid @enderror" type="text" name="username"
                                 placeholder="{{ __('Username') }}" required autofocus>
@@ -35,7 +35,7 @@
                         </div>
                         <div class="input-group mb-4"><span class="input-group-text">
                                 <svg class="icon">
-                                    <use xlink:href="{{ asset('icons/coreui.svg#cil-lock-locked') }}"></use>
+                                    <use xlink:href="{{ asset('coreui.svg#cil-lock-locked') }}"></use>
                                 </svg></span>
                             <input class="form-control @error('password') is-invalid @enderror" type="password"
                                 name="password" placeholder="{{ __('Password') }}" required>

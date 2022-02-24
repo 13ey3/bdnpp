@@ -18,7 +18,7 @@
 
                 <div class="input-group mb-3"><span class="input-group-text">
                     <svg class="icon">
-                      <use xlink:href="{{ asset('icons/coreui.svg#cil-user') }}"></use>
+                      <use xlink:href="{{ asset('coreui.svg#cil-user') }}"></use>
                     </svg></span>
                     <input class="form-control" type="text" name="name" placeholder="{{ __('Name') }}"
                            value="{{ old('name', auth()->user()->name) }}" required>
@@ -31,7 +31,7 @@
 
                 <div class="input-group mb-3"><span class="input-group-text">
                     <svg class="icon">
-                      <use xlink:href="{{ asset('icons/coreui.svg#cil-envelope-open') }}"></use>
+                      <use xlink:href="{{ asset('coreui.svg#cil-envelope-open') }}"></use>
                     </svg></span>
                     <input class="form-control" type="text" name="email" placeholder="{{ __('Email') }}"
                            value="{{ old('email', auth()->user()->email) }}" required>
@@ -44,7 +44,7 @@
 
                 <div class="input-group mb-3"><span class="input-group-text">
                     <svg class="icon">
-                      <use xlink:href="{{ asset('icons/coreui.svg#cil-lock-locked') }}"></use>
+                      <use xlink:href="{{ asset('coreui.svg#cil-lock-locked') }}"></use>
                     </svg></span>
                     <input class="form-control @error('password') is-invalid @enderror" type="password"
                            name="password" placeholder="{{ __('New password') }}" required>
@@ -57,7 +57,7 @@
 
                 <div class="input-group mb-4"><span class="input-group-text">
                     <svg class="icon">
-                      <use xlink:href="{{ asset('icons/coreui.svg#cil-lock-locked') }}"></use>
+                      <use xlink:href="{{ asset('coreui.svg#cil-lock-locked') }}"></use>
                     </svg></span>
                     <input class="form-control @error('password_confirmation') is-invalid @enderror" type="password"
                            name="password_confirmation" placeholder="{{ __('New password confirmation') }}" required>

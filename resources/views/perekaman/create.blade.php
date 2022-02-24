@@ -12,129 +12,55 @@
 @endsection
 
 @section('content')
-    <div class="card mb-4">
-        <div id="smartwizard">
-            <ul class="nav">
-                <li>
-                    <a class="nav-link" href="#step-1">
-                        Identitas Objek
-                    </a>
-                </li>
-                <li>
-                    <a class="nav-link" href="#step-2">
-                        Komponen Utama
-                    </a>
-                </li>
-                <li>
-                    <a class="nav-link" href="#step-3">
-                        Komponen Fasilitas
-                    </a>
-                </li>
-                <li>
-                    <a class="nav-link" href="#step-4">
-                        Komponen Tambahan
-                    </a>
-                </li>
-            </ul>
-
-            <div class="tab-content">
-                <div id="step-1" class="tab-pane" role="tabpanel">
-                    <div class="row">
-                        <label class="form-label col-md-2">Jenis Transaksi</label>
-                        <div class="col-md-6">
-                            <select name="jenis_transaksi" id="jenis_transaksi" class="form-select">
-                                <option value="">Pilih</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <label class="form-label col-md-2">NOP</label>
-                        <div class="col-md-6">
-                            <input type="text" class="form-control" name="nop" id="nop">
-                        </div>
-                    </div>
-                    <div class="row">
-                        <label class="form-label col-md-2">Jumlah Bngunan</label>
-                        <div class="col-md-6">
-                            <input type="text" class="form-control" name="nop" id="nop">
-                        </div>
-                    </div>
-                    <div class="row">
-                        <label class="form-label col-md-2">Bangunan Ke</label>
-                        <div class="col-md-1">
-                            <input type="text" class="form-control" name="nop" id="nop">
-                        </div>
-                        <label class="form-label col-md-2">Upload Foto</label>
-                        <div class="col-md-4">
-                            <input type="text" class="form-control" name="nop" id="nop">
-                        </div>
-                    </div>
-                    <div class="row">
-                        <label class="form-label col-md-2">Jenis Penggunaan Bangunan</label>
-                        <div class="col-md-6">
-                            <select name="jenis_transaksi" id="jenis_transaksi" class="form-select">
-                                <option value="">Pilih</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <label class="form-label col-md-2">Nama WP</label>
-                        <div class="col-md-6">
-                            <input type="text" class="form-control" name="nop" id="nop">
-                        </div>
-                    </div>
-                    <div class="row">
-                        <label class="form-label col-md-2">Alamat WP</label>
-                        <div class="col-md-6">
-                            <input type="text" class="form-control" name="nop" id="nop">
-                        </div>
-                    </div>
-                    <div class="row">
-                        <label class="form-label col-md-2">Blok/Kavling</label>
-                        <div class="col-md-6">
-                            <input type="text" class="form-control" name="nop" id="nop">
-                        </div>
-                    </div>
-                    <div class="row">
-                        <label class="form-label col-md-2">RT</label>
-                        <div class="col-md-1">
-                            <input type="text" class="form-control" name="nop" id="nop">
-                        </div>
-                        <label class="form-label col-md-2">RW</label>
-                        <div class="col-md-1">
-                            <input type="text" class="form-control" name="nop" id="nop">
-                        </div>
-                    </div>
-                    <div class="row">
-                        <label class="form-label col-md-2">Kondisi Umum</label>
-                        <div class="col-md-6">
-                            <select name="jenis_transaksi" id="jenis_transaksi" class="form-select">
-                                <option value="">Pilih</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <label class="form-label col-md-2">Tahun Selesai Dibangun</label>
-                        <div class="col-md-1">
-                            <input type="text" class="form-control" name="nop" id="nop">
-                        </div>
-                        <label class="form-label col-md-2">Tahun Renovasi</label>
-                        <div class="col-md-1">
-                            <input type="text" class="form-control" name="nop" id="nop">
-                        </div>
-                    </div>
-                </div>
-                <div id="step-2" class="tab-pane" role="tabpanel">
+    <div id="smartwizard" class="bg-light">
+        <ul class="nav">
+            <li>
+                <a class="nav-link" href="#step-1">
+                    Identitas Objek
+                </a>
+            </li>
+            <li>
+                <a class="nav-link" href="#step-2">
                     Komponen Utama
-                </div>
-                <div id="step-3" class="tab-pane" role="tabpanel">
+                </a>
+            </li>
+            <li>
+                <a class="nav-link" href="#step-3">
                     Komponen Fasilitas
-                </div>
-                <div id="step-4" class="tab-pane" role="tabpanel">
+                </a>
+            </li>
+            <li>
+                <a class="nav-link" href="#step-4">
                     Komponen Tambahan
-                </div>
+                </a>
+            </li>
+        </ul>
+
+        <div class="tab-content">
+            <div id="step-1" class="tab-pane" role="tabpanel">
+                @include('perekaman.partial.identitas-objek')
+            </div>
+            <div id="step-2" class="tab-pane" role="tabpanel">
+                @include('perekaman.partial.komponen-utama')
+            </div>
+            <div id="step-3" class="tab-pane" role="tabpanel">
+                @include('perekaman.partial.komponen-fasilitas')
+            </div>
+            <div id="step-4" class="tab-pane" role="tabpanel">
+                @include('perekaman.partial.komponen-khusus')
             </div>
         </div>
+    </div>
+    <div class="d-flex justify-content-end mb-5">
+        <button class="btn btn-secondary mx-2" id="prev-btn" type="button"><svg class="icon me-0">
+                <use xlink:href="{{ asset('coreui.svg#cil-chevron-left') }}"></use>
+            </svg> Previous</button>
+        <button class="btn btn-secondary" id="next-btn" type="button"><svg class="icon me-0">
+                <use xlink:href="{{ asset('coreui.svg#cil-chevron-right') }}"></use>
+            </svg> Next</button>
+        <button class="btn btn-primary d-none" id="save-btn" type="submit"><svg class="icon me-0">
+                <use xlink:href="{{ asset('coreui.svg#cil-save') }}"></use>
+            </svg> Save</button>
     </div>
 @endsection
 
@@ -142,19 +68,73 @@
     <script>
         $(document).ready(function() {
 
-            // SmartWizard initialize
+            // Step show event
+            $("#smartwizard").on("showStep", function(e, anchorObject, stepNumber, stepDirection, stepPosition) {
+                $("#prev-btn").removeClass('disabled');
+                $("#next-btn").removeClass('disabled');
+
+                if (stepPosition === 'first') {
+                    $("#prev-btn").addClass('disabled');
+                } else if (stepPosition === 'last') {
+                    $("#next-btn").addClass('d-none');
+                    $("#save-btn").removeClass('d-none');
+                } else {
+                    $("#prev-btn").removeClass('disabled');
+                    $("#next-btn").removeClass('disabled');
+                }
+            });
+
+            // Smart Wizard
             $('#smartwizard').smartWizard({
                 selected: 0,
                 theme: 'arrows',
+                enableURLhash: false,
                 transition: {
                     animation: 'slide-horizontal', // Effect on navigation, none/fade/slide-horizontal/slide-vertical/slide-swing
                 },
-                // toolbarSettings: {
-                //     toolbarPosition: 'bottom', // both bottom
-                //     // toolbarExtraButtons: [btnFinish, btnCancel]
-                // }
+                toolbarSettings: {
+                    showNextButton: false, // show/hide a Next button
+                    showPreviousButton: false, // show/hide a Previous button
+                }
             });
 
+            // External Button Events
+            $("#reset-btn").on("click", function() {
+                // Reset wizard
+                $('#smartwizard').smartWizard("reset");
+                return true;
+            });
+
+            $("#prev-btn").on("click", function() {
+                // Navigate previous
+                $('#smartwizard').smartWizard("prev");
+                return true;
+            });
+
+            $("#next-btn").on("click", function() {
+                // Navigate next
+                $('#smartwizard').smartWizard("next");
+                return true;
+            });
+
+
+            // Demo Button Events
+            $("#got_to_step").on("change", function() {
+                // Go to step
+                var step_index = $(this).val() - 1;
+                $('#smartwizard').smartWizard("goToStep", step_index);
+                return true;
+            });
+
+            $("#is_justified").on("click", function() {
+                // Change Justify
+                var options = {
+                    justified: $(this).prop("checked")
+                };
+
+                $('#smartwizard').smartWizard("setOptions", options);
+                return true;
+            });
         });
     </script>
 @endpush

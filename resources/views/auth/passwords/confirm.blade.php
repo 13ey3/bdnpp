@@ -11,7 +11,7 @@
 
                     <div class="input-group mb-3"><span class="input-group-text">
                     <svg class="icon">
-                      <use xlink:href="{{ asset('icons/coreui.svg#cil-lock-locked') }}"></use>
+                      <use xlink:href="{{ asset('coreui.svg#cil-lock-locked') }}"></use>
                     </svg></span>
                         <input class="form-control @error('password') is-invalid @enderror" type="password"
                                id="password" name="password" placeholder="{{ __('Password') }}">

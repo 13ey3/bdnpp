@@ -15,7 +15,7 @@
             @can('kelurahan-tambah')
                 <button class="btn btn-success btn-sm float-end" type="button" data-coreui-toggle="modal"
                     data-coreui-target="#modalTambahKelurahan"><svg class="icon me-0">
-                        <use xlink:href="{{ asset('icons/coreui.svg#cil-plus') }}"></use>
+                        <use xlink:href="{{ asset('coreui.svg#cil-plus') }}"></use>
                     </svg> Tambah</button>
             @endcan
         </div>
