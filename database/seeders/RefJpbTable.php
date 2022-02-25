@@ -35,7 +35,7 @@ class RefJpbTable extends Seeder
 
         foreach ($refJpb as $jpb) {
             RefJpb::create([
-                'kd_jbp' => $jpb[0],
+                'kd_jpb' => $jpb[0],
                 'nama_jpb' => $jpb[1]
             ]);
         }

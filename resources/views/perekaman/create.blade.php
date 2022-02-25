@@ -12,56 +12,59 @@
 @endsection
 
 @section('content')
-    <div id="smartwizard" class="bg-light">
-        <ul class="nav">
-            <li>
-                <a class="nav-link" href="#step-1">
-                    Identitas Objek
-                </a>
-            </li>
-            <li>
-                <a class="nav-link" href="#step-2">
-                    Komponen Utama
-                </a>
-            </li>
-            <li>
-                <a class="nav-link" href="#step-3">
-                    Komponen Fasilitas
-                </a>
-            </li>
-            <li>
-                <a class="nav-link" href="#step-4">
-                    Komponen Tambahan
-                </a>
-            </li>
-        </ul>
+    <form action="{{ route('perekaman-data.store') }}" method="POST">
+        @csrf
+        <div id="smartwizard" class="bg-light">
+            <ul class="nav">
+                <li>
+                    <a class="nav-link" href="#step-1">
+                        Identitas Objek
+                    </a>
+                </li>
+                <li>
+                    <a class="nav-link" href="#step-2">
+                        Komponen Utama
+                    </a>
+                </li>
+                <li>
+                    <a class="nav-link" href="#step-3">
+                        Komponen Fasilitas
+                    </a>
+                </li>
+                <li>
+                    <a class="nav-link" href="#step-4">
+                        Komponen Tambahan
+                    </a>
+                </li>
+            </ul>
 
-        <div class="tab-content">
-            <div id="step-1" class="tab-pane" role="tabpanel">
-                @include('perekaman.partial.identitas-objek')
-            </div>
-            <div id="step-2" class="tab-pane" role="tabpanel">
-                @include('perekaman.partial.komponen-utama')
-            </div>
-            <div id="step-3" class="tab-pane" role="tabpanel">
-                @include('perekaman.partial.komponen-fasilitas')
-            </div>
-            <div id="step-4" class="tab-pane" role="tabpanel">
-                @include('perekaman.partial.komponen-khusus')
+            <div class="tab-content">
+                <div id="step-1" class="tab-pane" role="tabpanel">
+                    @include('perekaman.partial.identitas-objek')
+                </div>
+                <div id="step-2" class="tab-pane" role="tabpanel">
+                    @include('perekaman.partial.komponen-utama')
+                </div>
+                <div id="step-3" class="tab-pane" role="tabpanel">
+                    @include('perekaman.partial.komponen-fasilitas')
+                </div>
+                <div id="step-4" class="tab-pane" role="tabpanel">
+                    @include('perekaman.partial.komponen-khusus')
+                </div>
             </div>
         </div>
-    </div>
-    <div class="d-flex justify-content-end mb-5">
-        <button class="btn btn-secondary mx-2" id="prev-btn" type="button"><svg class="icon me-0">
-                <use xlink:href="{{ asset('coreui.svg#cil-chevron-left') }}"></use>
-            </svg> Previous</button>
-        <button class="btn btn-secondary" id="next-btn" type="button"><svg class="icon me-0">
-                <use xlink:href="{{ asset('coreui.svg#cil-chevron-right') }}"></use>
-            </svg> Next</button>
-        <button class="btn btn-primary d-none" id="save-btn" type="submit"><svg class="icon me-0">
-                <use xlink:href="{{ asset('coreui.svg#cil-save') }}"></use>
-            </svg> Save</button>
-    </div>
+        <div class="d-flex justify-content-end mb-5">
+            <button class="btn btn-secondary mx-2" id="prev-btn" type="button"><svg class="icon me-0">
+                    <use xlink:href="{{ asset('coreui.svg#cil-chevron-left') }}"></use>
+                </svg> Previous</button>
+            <button class="btn btn-secondary" id="next-btn" type="button"><svg class="icon me-0">
+                    <use xlink:href="{{ asset('coreui.svg#cil-chevron-right') }}"></use>
+                </svg> Next</button>
+            <button class="btn btn-primary d-none" id="save-btn" type="submit"><svg class="icon me-0">
+                    <use xlink:href="{{ asset('coreui.svg#cil-save') }}"></use>
+                </svg> Save</button>
+        </div>
+    </form>
 @endsection
 
 @push('scripts')

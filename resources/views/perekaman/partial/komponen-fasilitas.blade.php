@@ -1,84 +1,34 @@
 <div class="row">
-    <label class="form-label col-md-2">Jenis Transaksi</label>
-    <div class="col-md-6">
-        <select name="jenis_transaksi" id="jenis_transaksi" class="form-select">
-            <option value="">Pilih</option>
-        </select>
-    </div>
-</div>
-<div class="row">
-    <label class="form-label col-md-2">NOP</label>
-    <div class="col-md-6">
-        <input type="text" class="form-control" name="nop" id="nop">
-    </div>
-</div>
-<div class="row">
-    <label class="form-label col-md-2">Jumlah Bngunan</label>
-    <div class="col-md-6">
-        <input type="text" class="form-control" name="nop" id="nop">
-    </div>
-</div>
-<div class="row">
-    <label class="form-label col-md-2">Bangunan Ke</label>
-    <div class="col-md-1">
-        <input type="text" class="form-control" name="nop" id="nop">
-    </div>
-    <label class="form-label col-md-2">Upload Foto</label>
-    <div class="col-md-4">
-        <input type="text" class="form-control" name="nop" id="nop">
-    </div>
-</div>
-<div class="row">
-    <label class="form-label col-md-2">Jenis Penggunaan Bangunan</label>
-    <div class="col-md-6">
-        <select name="jenis_transaksi" id="jenis_transaksi" class="form-select">
-            <option value="">Pilih</option>
-        </select>
-    </div>
-</div>
-<div class="row">
-    <label class="form-label col-md-2">Nama WP</label>
-    <div class="col-md-6">
-        <input type="text" class="form-control" name="nop" id="nop">
-    </div>
-</div>
-<div class="row">
-    <label class="form-label col-md-2">Alamat WP</label>
-    <div class="col-md-6">
-        <input type="text" class="form-control" name="nop" id="nop">
-    </div>
-</div>
-<div class="row">
-    <label class="form-label col-md-2">Blok/Kavling</label>
-    <div class="col-md-6">
-        <input type="text" class="form-control" name="nop" id="nop">
-    </div>
-</div>
-<div class="row">
-    <label class="form-label col-md-2">RT</label>
-    <div class="col-md-1">
-        <input type="text" class="form-control" name="nop" id="nop">
-    </div>
-    <label class="form-label col-md-2">RW</label>
-    <div class="col-md-1">
-        <input type="text" class="form-control" name="nop" id="nop">
-    </div>
-</div>
-<div class="row">
-    <label class="form-label col-md-2">Kondisi Umum</label>
-    <div class="col-md-6">
-        <select name="jenis_transaksi" id="jenis_transaksi" class="form-select">
-            <option value="">Pilih</option>
-        </select>
-    </div>
-</div>
-<div class="row">
-    <label class="form-label col-md-2">Tahun Selesai Dibangun</label>
-    <div class="col-md-1">
-        <input type="text" class="form-control" name="nop" id="nop">
-    </div>
-    <label class="form-label col-md-2">Tahun Renovasi</label>
-    <div class="col-md-1">
-        <input type="text" class="form-control" name="nop" id="nop">
+    <div class="col-md-12 justify-content-center px-4">
+        <table class="table table-bordered table-sm caption-top">
+            <caption class="text-dark fw-semibold">AIR CONDITIONING (AC) :</caption>
+            <thead class="bg-info">
+                <tr>
+                    <th class="text-center text-white" >Material</th>
+                    <th class="text-center text-white" style="width: 10%">Unit</th>
+                    <th class="text-center text-white" style="width: 10%">PK</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($pendingin as $ac)
+                    <tr>
+                        <td>
+                            <div class="form-check">
+                                <input class="form-check-input" name="{{ $ac['id'] }}" id="{{ $ac['id'] }}"
+                                    type="checkbox" value="true">
+                                <label class="form-check-label"
+                                    for="{{ $ac['id'] }}">{{ $ac['nama_item_resource'] }}</label>
+                            </div>
+                        </td>
+                        <td class="text-center">
+                            <input type="text" class="form-control form-control-sm" name="{{ $ac['id'] . '_jml' }}" name="{{ $ac['id'] . '_jml' }}">
+                        </td>
+                        <td class="text-center">
+                            <input type="text" class="form-control form-control-sm" name="{{ $ac['id'] . '_pk' }}" name="{{ $ac['id'] . '_pk' }}">
+                        </td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
     </div>
 </div>

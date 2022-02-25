@@ -49,6 +49,7 @@ Route::middleware('auth')->group(function () {
     Route::prefix('perekaman-data')->group(function () {
         Route::get('', fn () => view('perekaman.index'))->name('perekaman-data');
         Route::get('create', [PerekamanDataController::class, 'create'])->name('perekaman-data.create');
+        Route::post('store', [PerekamanDataController::class, 'store'])->name('perekaman-data.store');
     });
 
     Route::prefix('informasi')->group(function () {

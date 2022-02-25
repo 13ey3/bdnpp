@@ -15,7 +15,7 @@ class CreateTableRefJpb extends Migration
     {
         Schema::create('ref_jpb', function (Blueprint $table) {
             $table->id();
-            $table->char('kd_jbp', 2)->unique();
+            $table->char('kd_jpb', 2)->unique();
             $table->string('nama_jpb');
             $table->timestamps();
         });

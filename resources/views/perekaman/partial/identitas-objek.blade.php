@@ -1,8 +1,10 @@
 <div class="row">
     <label class="form-label fs-6 col-md-2">Jenis Transaksi</label>
-    <div class="col-md-2">
+    <div class="col-md-3">
         <select name="jenis_transaksi" id="jenis_transaksi" class="form-select form-select-sm">
-            <option value="">Pilih</option>
+            @foreach (config('konstant.TRANSAKSI') as $trx)
+                <option value="{{ $trx['id'] }}">{{ $trx['name'] }}</option>
+            @endforeach
         </select>
     </div>
     <label class="form-label fs-6 col-md-1">NOP</label>
@@ -12,7 +14,7 @@
 </div>
 
 <div class="row">
-    <label class="form-label fs-6 col-md-2">Jumlah Bngunan</label>
+    <label class="form-label fs-6 col-md-2">Jumlah Bang.</label>
     <div class="col-md-1">
         <input type="text" class="form-control form-control-sm" name="jml_bng" id="jml_bng">
     </div>
@@ -26,7 +28,9 @@
     <label class="form-label fs-6 col-md-3">Jenis Penggunaan Bangunan</label>
     <div class="col-md-3">
         <select name="jenis_transaksi" id="jenis_transaksi" class="form-select form-select-sm">
-            <option value="">Pilih</option>
+            @foreach ($jpbs as $jpb)
+                <option value="{{ $jpb->id }}">{{ $jpb->kd_jpb .' || '. $jpb->nama_jpb }}</option>
+            @endforeach
         </select>
     </div>
 </div>
@@ -62,7 +66,9 @@
     <label class="form-label fs-6 col-md-2">Kondisi Umum</label>
     <div class="col-md-3">
         <select name="jenis_transaksi" id="jenis_transaksi" class="form-select form-select-sm">
-            <option value="">Pilih</option>
+            @foreach (config('konstant.KONDISI') as $kondisi)
+                <option value="{{ $kondisi['id'] }}">{{ $kondisi['name'] }}</option>
+            @endforeach
         </select>
     </div>
 </div>
@@ -103,7 +109,10 @@
     <label class="form-label fs-6 col-md-2">Konstruksi Bang</label>
     <div class="col-md-2">
         <select name="konstrusi_bng" id="konstrusi_bng" class="form-select form-select-sm">
-            <option value="">pilih</option>
+            @foreach (config('konstant.STRUKTUR') as $konstruksi)
+                <option value="{{ $konstruksi['id'] }}">{{ $konstruksi['name'] }}</option>
+            @endforeach
+
         </select>
     </div>
     <label class="form-label fs-6 col-md-2">Upload Foto</label>
