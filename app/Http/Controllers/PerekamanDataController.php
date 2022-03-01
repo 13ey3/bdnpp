@@ -32,6 +32,6 @@ class PerekamanDataController extends Controller
     public function store(Request $request)
     {
         echo "data berhasil disimpan";
-        return redirect('perekaamn-data');
+        return redirect('perekaman-data');
     }
 }
