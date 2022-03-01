@@ -2,9 +2,9 @@
 
 return [
     "ATAP" => [
+        ["id" => 1, "name" => "PELAT BETON"],
         ["id" => 2, "name" => "GENTENG KERAMIK"],
         ["id" => 3, "name" => "GENTENG PRESS BETON"],
-        ["id" => 1, "name" => "PELAT BETON"],
         ["id" => 4, "name" => "ASBES GELOMBANG"],
         ["id" => 5, "name" => "SENG GELOMBANG"],
         ["id" => 6, "name" => "GENTENG SIRAP"],
@@ -31,8 +31,8 @@ return [
         ["id" => 4, "name" => "JELEK "],
     ],
     "STRUKTUR" => [
-        ["id" => 1, "name" => "BAJA"],
         ["id" => 2, "name" => "BETON"],
+        ["id" => 1, "name" => "BAJA"],
         ["id" => 3, "name" => "BATU BATA"],
         ["id" => 4, "name" => "KAYU"],
     ],

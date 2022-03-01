@@ -16,7 +16,7 @@ class PerekamanDataController extends Controller
     public function create()
     {
         $data = [
-            'jpbs' => RefJpb::orderBy('kd_jpb')->get(),
+            'jpbs' => RefJpb::where('kd_jpb', '!=', '01')->orderBy('kd_jpb')->get(),
             'materi_dinding_dlm' => ItemResource::getMaterialDindingDalam(),
             'materi_dinding_luar' => ItemResource::getMaterialDindingLuar(),
             'pelapis_dinding_dlm' => ItemResource::getPelpisDindingDalam(),
