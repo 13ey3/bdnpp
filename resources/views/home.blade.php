@@ -25,7 +25,7 @@
                     <div class="card-body pb-0 d-flex justify-content-between align-items-start">
                         <div class="pb-3">
                             <div class="fs-4 fw-semibold">
-                                JPB {{ $row->kd_jbp }} <span class="fs-6 fw-normal">(0)</span>
+                                JPB {{ $row->kd_jbp }} <span class="fs-6 fw-normal">({{$row->jml_pendataan}})</span>
                             </div>
                             <div class="fw-normal fs-6">{{ $row->nama_jpb }}</div>
                         </div>
