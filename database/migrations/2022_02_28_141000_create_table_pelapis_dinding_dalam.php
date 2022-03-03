@@ -52,10 +52,10 @@ class CreateTablePelapisDindingDalam extends Migration
             $table->char('marmer_lkl_str', 1)->default(0);
             $table->char('marmer_lkl_bsm', 1)->default(0);
             $table->integer('marmer_lkl_lantai')->default(0);
-            $table->char('kramik_lkl', 1)->default(0);
-            $table->char('kramik_lkl_str', 1)->default(0);
-            $table->char('kramik_lkl_bsm', 1)->default(0);
-            $table->integer('kramik_lkl_lantai')->default(0);
+            $table->char('keramik', 1)->default(0);
+            $table->char('keramik_str', 1)->default(0);
+            $table->char('keramik_bsm', 1)->default(0);
+            $table->integer('keramik_lantai')->default(0);
             $table->timestamps();
         });
     }

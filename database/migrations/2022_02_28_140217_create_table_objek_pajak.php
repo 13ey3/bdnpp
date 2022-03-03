@@ -25,8 +25,8 @@ class CreateTableObjekPajak extends Migration
             $table->string('nama_wp');
             $table->string('jalan_op');
             $table->string('no_jalan_op');
-            $table->char('rt_op', 2)->default('00');
-            $table->char('rw_op', 3)->default('000');
+            $table->char('rt_op', 3)->default('000');
+            $table->char('rw_op', 2)->default('00');
             $table->integer('jml_bng');
             $table->timestamps();
         });

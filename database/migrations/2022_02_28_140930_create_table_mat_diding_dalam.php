@@ -13,7 +13,7 @@ class CreateTableMatDidingDalam extends Migration
      */
     public function up()
     {
-        Schema::create('material_diding_dalam', function (Blueprint $table) {
+        Schema::create('material_dinding_dalam', function (Blueprint $table) {
             $table->id();
             $table->integer('bangunan_id');
             $table->char('gyp_imp', 1)->default(0);
@@ -42,6 +42,6 @@ class CreateTableMatDidingDalam extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('material_diding_dalam');
+        Schema::dropIfExists('material_dinding_dalam');
     }
 }

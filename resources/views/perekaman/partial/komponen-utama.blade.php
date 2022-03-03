@@ -16,7 +16,7 @@
                                 <input class="form-check-input" name="{{ $mdd['id'] }}" id="{{ $mdd['id'] }}"
                                     type="checkbox" value="true">
                                 <label class="form-check-label"
-                                    for="{{ $mdd['id'] }}">{{ $mdd['nama_item_resource'] }}</label>
+                                    for="{{ $mdd['id'] }}">{{ $mdd['name'] }}</label>
                             </div>
                         </td>
                         <td class="text-center">
@@ -52,7 +52,6 @@
                 <tr>
                     <th class="text-center text-white">Material</th>
                     <th class="text-center text-white" style="width: 10%">Lantai</th>
-                    <th class="text-center text-white">Peruntukan</th>
                 </tr>
             </thead>
             <tbody>
@@ -63,30 +62,12 @@
                                 <input class="form-check-input" name="{{ $mdl['id'] }}" id="{{ $mdl['id'] }}"
                                     type="checkbox" value="true">
                                 <label class="form-check-label"
-                                    for="{{ $mdl['id'] }}">{{ $mdl['nama_item_resource'] }}</label>
+                                    for="{{ $mdl['id'] }}">{{ $mdl['name'] }}</label>
                             </div>
                         </td>
                         <td>
-                            <input type="text" class="form-control form-control-sm text-right"
-                                name="{{ 'lantai_mdl_' . $mdl['id'] }}" id="{{ 'lantai_mdl_' . $mdl['id'] }}">
-                        </td>
-                        <td class="text-center">
-                            <div class="d-flex justify-content-center">
-                                <div class="form-check me-2">
-                                    <input class="form-check-input" data-type="str"
-                                        name="{{ $mdl['id'] . '_struktur' }}" id="{{ $mdl['id'] . '_struktur' }}"
-                                        type="checkbox" value="true">
-                                    <label class="form-check-label"
-                                        for="{{ $mdl['id'] . '_struktur' }}">{{ __('Struktur') }}</label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" data-type="bsm"
-                                        name="{{ $mdl['id'] . '_basement' }}" id="{{ $mdl['id'] . '_basement' }}"
-                                        type="checkbox" value="true">
-                                    <label class="form-check-label"
-                                        for="{{ $mdl['id'] . '_basement' }}">{{ __('Basement') }}</label>
-                                </div>
-                            </div>
+                            <input type="text" class="form-control form-control-sm text-end"
+                                name="{{ 'lantai_' . $mdl['id'] }}" id="{{ 'lantai_' . $mdl['id'] }}">
                         </td>
                     </tr>
                 @endforeach
@@ -113,12 +94,12 @@
                                 <input class="form-check-input" name="{{ $pdd['id'] }}" id="{{ $pdd['id'] }}"
                                     type="checkbox" value="true">
                                 <label class="form-check-label"
-                                    for="{{ $pdd['id'] }}">{{ $pdd['nama_item_resource'] }}</label>
+                                    for="{{ $pdd['id'] }}">{{ $pdd['name'] }}</label>
                             </div>
                         </td>
                         <td>
                             <input type="text" class="form-control form-control-sm text-right"
-                                name="{{ 'lantai_pdd_' . $pdd['id'] }}" id="{{ 'lantai_pdd_' . $pdd['id'] }}">
+                                name="{{ 'lantai_' . $pdd['id'] }}" id="{{ 'lantai_' . $pdd['id'] }}">
                         </td>
                         <td class="text-center">
                             <div class="d-flex justify-content-center">
@@ -153,7 +134,6 @@
                 <tr>
                     <th class="text-center text-white">Material</th>
                     <th class="text-center text-white" style="width: 10%">Lantai</th>
-                    <th class="text-center text-white">Peruntukan</th>
                 </tr>
             </thead>
             <tbody>
@@ -164,30 +144,12 @@
                                 <input class="form-check-input" name="{{ $pdl['id'] }}" id="{{ $pdl['id'] }}"
                                     type="checkbox" value="true">
                                 <label class="form-check-label"
-                                    for="{{ $pdl['id'] }}">{{ $pdl['nama_item_resource'] }}</label>
+                                    for="{{ $pdl['id'] }}">{{ $pdl['name'] }}</label>
                             </div>
                         </td>
                         <td>
-                            <input type="text" class="form-control form-control-sm text-right"
-                                name="{{ 'lantai_pdl_' . $pdl['id'] }}" id="{{ 'lantai_pdl_' . $pdl['id'] }}">
-                        </td>
-                        <td class="text-center">
-                            <div class="d-flex justify-content-center">
-                                <div class="form-check me-2">
-                                    <input class="form-check-input" data-type="str"
-                                        name="{{ $pdl['id'] . '_struktur' }}" id="{{ $pdl['id'] . '_struktur' }}"
-                                        type="checkbox" value="true">
-                                    <label class="form-check-label"
-                                        for="{{ $pdl['id'] . '_struktur' }}">{{ __('Struktur') }}</label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" data-type="bsm"
-                                        name="{{ $pdl['id'] . '_basement' }}" id="{{ $pdl['id'] . '_basement' }}"
-                                        type="checkbox" value="true">
-                                    <label class="form-check-label"
-                                        for="{{ $pdl['id'] . '_basement' }}">{{ __('Basement') }}</label>
-                                </div>
-                            </div>
+                            <input type="text" class="form-control form-control-sm text-end"
+                                name="{{ 'lantai_' . $pdl['id'] }}" id="{{ 'lantai_' . $pdl['id'] }}">
                         </td>
                     </tr>
                 @endforeach
@@ -199,7 +161,7 @@
 <div class="row">
     <div class="col-md-12 justify-content-center px-4">
         <table class="table table-bordered table-sm caption-top">
-            <caption class="text-dark fw-semibold">Laangit-langit :</caption>
+            <caption class="text-dark fw-semibold">Langit-langit :</caption>
             <thead class="bg-info">
                 <tr>
                     <th class="text-center text-white">Material</th>
@@ -215,12 +177,12 @@
                                 <input class="form-check-input" name="{{ $ll['id'] }}" id="{{ $ll['id'] }}"
                                     type="checkbox" value="true">
                                 <label class="form-check-label"
-                                    for="{{ $ll['id'] }}">{{ $ll['nama_item_resource'] }}</label>
+                                    for="{{ $ll['id'] }}">{{ $ll['name'] }}</label>
                             </div>
                         </td>
                         <td>
                             <input type="text" class="form-control form-control-sm text-right"
-                                name="{{ 'lantai_ll_' . $ll['id'] }}" id="{{ 'lantai_ll_' . $ll['id'] }}">
+                                name="{{ 'lantai_' . $ll['id'] }}" id="{{ 'lantai_' . $ll['id'] }}">
                         </td>
                         <td class="text-center">
                             <div class="d-flex justify-content-center">
@@ -277,12 +239,12 @@
                                 <input class="form-check-input" name="{{ $pl['id'] }}" id="{{ $pl['id'] }}"
                                     type="checkbox" value="true">
                                 <label class="form-check-label"
-                                    for="{{ $pl['id'] }}">{{ $pl['nama_item_resource'] }}</label>
+                                    for="{{ $pl['id'] }}">{{ $pl['name'] }}</label>
                             </div>
                         </td>
                         <td>
                             <input type="text" class="form-control form-control-sm text-right"
-                                name="{{ 'lantai_pl_' . $pl['id'] }}" id="{{ 'lantai_pl_' . $pl['id'] }}">
+                                name="{{ 'lantai_' . $pl['id'] }}" id="{{ 'lantai_' . $pl['id'] }}">
                         </td>
                         <td class="text-center">
                             <div class="d-flex justify-content-center">

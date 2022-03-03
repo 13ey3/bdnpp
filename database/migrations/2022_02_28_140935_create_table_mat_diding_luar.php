@@ -13,27 +13,21 @@ class CreateTableMatDidingLuar extends Migration
      */
     public function up()
     {
-        Schema::create('material_diding_luar', function (Blueprint $table) {
+        Schema::create('material_dinding_luar', function (Blueprint $table) {
             $table->id();
             $table->integer('bangunan_id');
             $table->char('batu', 1)->default(0);
-            $table->char('batu_str', 1)->default(0);
-            $table->char('batu_bsm', 1)->default(0);
+            $table->integer('batu_lantai')->default(0);
             $table->char('kaca', 1)->default(0);
-            $table->char('kaca_str', 1)->default(0);
-            $table->char('kaca_bsm', 1)->default(0);
+            $table->integer('kaca_lantai')->default(0);
             $table->char('celcon', 1)->default(0);
-            $table->char('celcon_str', 1)->default(0);
-            $table->char('celcon_bsm', 1)->default(0);
+            $table->integer('celcon_lantai')->default(0);
             $table->char('beton', 1)->default(0);
-            $table->char('beton_str', 1)->default(0);
-            $table->char('beton_bsm', 1)->default(0);
+            $table->integer('beton_lantai')->default(0);
             $table->char('seng', 1)->default(0);
-            $table->char('seng_str', 1)->default(0);
-            $table->char('seng_bsm', 1)->default(0);
+            $table->integer('seng_lantai')->default(0);
             $table->char('kayu', 1)->default(0);
-            $table->char('kayu_str', 1)->default(0);
-            $table->char('kayu_bsm', 1)->default(0);
+            $table->integer('kayu_lantai')->default(0);
             $table->timestamps();
         });
     }
@@ -45,6 +39,6 @@ class CreateTableMatDidingLuar extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('material_diding_luar');
+        Schema::dropIfExists('material_dinding_luar');
     }
 }

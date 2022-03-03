@@ -47,9 +47,10 @@ Route::middleware('auth')->group(function () {
     Route::post('clients_delete_ajax', [\App\Http\Controllers\ClientController::class, 'client_delete'])->name('clients.delete.ajax');
 
     Route::prefix('perekaman-data')->group(function () {
-        Route::get('', fn () => view('perekaman.index'))->name('perekaman-data');
+        Route::get('', [PerekamanDataController::class, 'index'])->name('perekaman-data');
         Route::get('create', [PerekamanDataController::class, 'create'])->name('perekaman-data.create');
         Route::post('store', [PerekamanDataController::class, 'store'])->name('perekaman-data.store');
+        Route::post('getDT', [PerekamanDataController::class, 'getDT'])->name('perekaman-data.getDT');
     });
 
     Route::prefix('informasi')->group(function () {

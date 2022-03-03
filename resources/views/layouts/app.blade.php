@@ -15,6 +15,7 @@
     <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
     {{-- <link href="{{ asset('extend/jquery-smartwizard/dist/css/smart_wizard_all.min.css') }}" rel="stylesheet"
         type="text/css" /> --}}
+    <link rel="stylesheet" href="{{ asset('extend/datagrid/datagrid.css') }}">
     <!-- Include SmartWizard CSS -->
     <link href="https://cdn.jsdelivr.net/npm/smartwizard@5/dist/css/smart_wizard_all.min.css" rel="stylesheet"
         type="text/css" />
@@ -108,20 +109,18 @@
         <footer class="footer">
             <div> <a href="https://asdfproject.com" target="_balnk">ASDF-Project</a> &copy; 2022
             </div>
-            <div class="ms-auto">Powered by&nbsp;<a href="https://coreui.io/bootstrap/ui-components/">CoreUI UI
-                    Components</a></div>
+            <div class="ms-auto"></div>
         </footer>
     </div>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" crossorigin="anonymous"></script>
-    {{-- <script src="{{ asset('js/coreui.bundle.min.js') }}"></script> --}}
-    {{-- <script src="{{ asset('js/app.js') }}"></script> --}}
+    <script src="https://unpkg.com/imask"></script>
     <script src="{{ asset('js/coreui.js') }}"></script>
     <script src="{{ asset('js/custome.js') }}"></script>
     <script src="{{ asset('extend/jquery-smartwizard/dist/js/jquery.smartWizard.min.js') }}" type="text/javascript">
     </script>
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
-    <script src="https://cdn.datatables.net/v/bs4/dt-1.11.3/datatables.min.js"></script>
+    <script src="{{ asset('extend/datatable/datatables.min.js') }}"></script>
     <script type="text-javascript">
 
     </script>

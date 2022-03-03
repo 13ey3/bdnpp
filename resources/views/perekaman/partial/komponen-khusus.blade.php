@@ -13,11 +13,11 @@
     <div class="row">
         <label class="form-label col-md-2">Luas Mazzenin(m)</label>
         <div class="col-md-1">
-            <input type="text" class="form-control form-control-sm" name="tinggi_kolom" id="tinggi_kolom">
+            <input type="text" class="form-control form-control-sm" name="luas_mezanin" id="tinggi_kolom">
         </div>
         <label class="form-label col-md-3">Daya Dukung Lantai(kg/m2)</label>
         <div class="col-md-1">
-            <input type="text" class="form-control form-control-sm" name="lebar_bentang" id="lebar_bentang">
+            <input type="text" class="form-control form-control-sm" name="daya_lantai" id="lebar_bentang">
         </div>
     </div>
 </div>
@@ -37,10 +37,11 @@
     <div class="row">
         <label class="form-label col-md-2">Posisi</label>
         <div class="col-md-3">
-            <input class="form-check-input" name="posisi_tangki" id="posisi_tangki_atas" type="radio" value="luas">
-            <label class="form-check-label pe-2" for="posisi_tangki_atas">Atas Tanah</label>
-            <input class="form-check-input" name="posisi_tangki" id="posisi_tangki_bawah" type="radio" value="lantai">
-            <label class="form-check-label pe-2" for="posisi_tangki_bawah">Bawah Tanah</label>
+            <select name="posisi_tank" id="posisi_tank" class="form-select form-select-sm">
+                <option value="0">Pilih</option>
+                <option value="1">Atas Tanah</option>
+                <option value="2">Bawah Tanah</option>
+            </select>
         </div>
         <label class="form-label col-md-2">Kapasitas (m3)</label>
         <div class="col-md-1">

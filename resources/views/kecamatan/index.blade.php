@@ -114,6 +114,7 @@
                 .then(data => data)
                 .catch(err => console.log(err))
         }
+        
         var kecamatanTable = $('#kecamatan-table').DataTable({
             processing: true,
             serverSide: true,

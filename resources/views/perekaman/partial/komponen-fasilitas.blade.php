@@ -4,32 +4,70 @@
             <caption class="text-dark fw-semibold">AIR CONDITIONING (AC) :</caption>
             <thead class="bg-info">
                 <tr>
-                    <th class="text-center text-white">Material</th>
+                    <th class="text-center text-white">Jenis</th>
                     <th class="text-center text-white" style="width: 10%">Unit</th>
                     <th class="text-center text-white" style="width: 10%">PK</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach ($pendingin as $ac)
                     <tr>
                         <td>
                             <div class="form-check">
-                                <input class="form-check-input" name="{{ $ac['id'] }}" id="{{ $ac['id'] }}"
-                                    type="checkbox" value="true">
                                 <label class="form-check-label"
-                                    for="{{ $ac['id'] }}">{{ $ac['nama_item_resource'] }}</label>
+                                    for="ac_split">{{ __('AC Split') }}</label>
                             </div>
                         </td>
                         <td class="text-center">
-                            <input type="text" class="form-control form-control-sm" name="{{ $ac['id'] . '_jml' }}"
-                                name="{{ $ac['id'] . '_jml' }}">
+                            <input type="text" class="form-control form-control-sm" name="ac_split_jml"
+                                id="ac_split_jml">
                         </td>
                         <td class="text-center">
-                            <input type="text" class="form-control form-control-sm" name="{{ $ac['id'] . '_pk' }}"
-                                name="{{ $ac['id'] . '_pk' }}">
+                            <input type="text" class="form-control form-control-sm" name="ac_split_pk"
+                                id="ac_split_pk">
                         </td>
                     </tr>
-                @endforeach
+                    <tr>
+                        <td>
+                            <div class="form-check">
+                                <label class="form-check-label"
+                                    for="ac_window">{{ __('AC Window') }}</label>
+                            </div>
+                        </td>
+                        <td class="text-center">
+                            <input type="text" class="form-control form-control-sm" name="ac_window_jml"
+                                id="ac_window_jml">
+                        </td>
+                        <td class="text-center">
+                            <input type="text" class="form-control form-control-sm" name="ac_window_pk"
+                                id="ac_window_pk">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="form-check">
+                                <label class="form-check-label"
+                                    for="ac_floor">{{ __('AC Floor') }}</label>
+                            </div>
+                        </td>
+                        <td class="text-center">
+                            <input type="text" class="form-control form-control-sm" name="ac_floor_jml"
+                                id="ac_floor_jml">
+                        </td>
+                        <td class="text-center">
+                            <input type="text" class="form-control form-control-sm" name="ac_floor_pk"
+                                id="ac_floor_pk">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="3">
+                            <div class="form-check">
+                                <input class="form-check-input" name="ac_central" id="ac_central"
+                                    type="checkbox" value="true">
+                                <label class="form-check-label"
+                                    for="ac_split">{{ __('AC Central') }}</label>
+                            </div>
+                        </td>
+                    </tr>
             </tbody>
         </table>
     </div>
@@ -39,11 +77,11 @@
     <label class="form-label fs-6 fw-semibold col-md-2">Lift</label>
     <label class="form-label fs-6 col-md-2">Penumpang</label>
     <div class="col-md-1">
-        <input type="text" class="form-control form-control-sm" name="lift_penumpang" id="lift_penumpang">
+        <input type="text" class="form-control form-control-sm" data-type="stair" name="lift_penumpang" id="lift_penumpang">
     </div>
     <label class="form-label fs-6 col-md-2">Barang</label>
     <div class="col-md-1">
-        <input type="text" class="form-control form-control-sm" name="lift_barang" id="lift_barang">
+        <input type="text" class="form-control form-control-sm" data-type="stair" name="lift_barang" id="lift_barang">
     </div>
 </div>
 
@@ -51,11 +89,11 @@
     <label class="form-label fs-6 fw-semibold col-md-2">Eskalator</label>
     <label class="form-label fs-6 col-md-2">Lebar < 0,8 m</label>
             <div class="col-md-1">
-                <input type="text" class="form-control form-control-sm" name="lift_penumpang" id="lift_penumpang">
+                <input type="text" class="form-control form-control-sm" data-type="stair" name="eskalator_kecil" id="eskalator_kecil">
             </div>
             <label class="form-label fs-6 col-md-2">Lebar > 0,8 m</label>
             <div class="col-md-1">
-                <input type="text" class="form-control form-control-sm" name="lift_penumpang" id="lift_penumpang">
+                <input type="text" class="form-control form-control-sm" data-type="stair" name="eskalator_besar" id="eskalator_besar">
             </div>
 </div>
 
@@ -65,8 +103,8 @@
             <thead class="bg-info">
                 <tr>
                     <th class="text-center text-white">Pagar</th>
-                    <th class="text-center text-white" style="width: 10%">Panjang</th>
-                    <th class="text-center text-white" style="width: 10%">Tinggi</th>
+                    <th class="text-center text-white" style="width: 10%">Panjang (m)</th>
+                    <th class="text-center text-white" style="width: 10%">Tinggi (m)</th>
                 </tr>
             </thead>
             <tbody>
@@ -80,11 +118,11 @@
                         </select>
                     </td>
                     <td>
-                        <input type="text" name="pjg_pagar_1" id="pjg_pagar_1" class="form-control form-control-sm">
+                        <input type="text" name="pjg_pagar_1" id="pjg_pagar_1" class="form-control form-control-sm text-right">
                     </td>
                     <td>
                         <input type="text" name="tinggi_pagar_1" id="tinggi_pagar_1"
-                            class="form-control form-control-sm">
+                            class="form-control form-control-sm text-right">
                     </td>
                 </tr>
                 <tr>
@@ -97,11 +135,11 @@
                         </select>
                     </td>
                     <td>
-                        <input type="text" name="pjg_pagar_2" id="pjg_pagar_2" class="form-control form-control-sm">
+                        <input type="text" name="pjg_pagar_2" id="pjg_pagar_2" class="form-control form-control-sm text-right">
                     </td>
                     <td>
                         <input type="text" name="tinggi_pagar_2" id="tinggi_pagar_2"
-                            class="form-control form-control-sm">
+                            class="form-control form-control-sm text-right">
                     </td>
                 </tr>
                 <tr>
@@ -114,11 +152,11 @@
                         </select>
                     </td>
                     <td>
-                        <input type="text" name="pjg_pagar_3" id="pjg_pagar_3" class="form-control form-control-sm">
+                        <input type="text" name="pjg_pagar_3" id="pjg_pagar_3" class="form-control form-control-sm text-right">
                     </td>
                     <td>
                         <input type="text" name="tinggi_pagar_3" id="tinggi_pagar_3"
-                            class="form-control form-control-sm">
+                            class="form-control form-control-sm text-right">
                     </td>
                 </tr>
             </tbody>
@@ -136,7 +174,7 @@
 <div class="row">
     <label class="form-label col-md-3">Daya Listrik Terpasang</label>
     <div class="col-md-2">
-        <input type="text" class="form-control form-control-sm text-left" name="ukuran_genset" id="ukuran_genset">
+        <input type="text" class="form-control form-control-sm text-left" name="daya_listrik" id="daya_listrik">
     </div>
 </div>
 
@@ -153,7 +191,7 @@
 <div class="row">
     <label class="form-label col-md-3">Sis. Pengolahan Limbah</label>
     <div class="col-md-2">
-        <select name="air_panas" id="air_panas" class="form-select form-select-sm">
+        <select name="pengolah_limbah" id="pengolah_limbah" class="form-select form-select-sm">
             <option value="false">Tidak Ada</option>
             <option value="true">Ada</option>
         </select>
@@ -161,7 +199,7 @@
 </div>
 
 <div class="row">
-    <label class="form-label col-md-3">Sumur Artesis</label>
+    <label class="form-label col-md-3">Sumur Artesis m<sup>2</sup></label>
     <div class="col-md-2">
         <input type="text" class="form-control form-control-sm text-left" name="sumur" id="sumur">
     </div>
@@ -180,13 +218,13 @@
 <div class="row">
     <label class="form-label col-md-3">Proteksi Api</label>
     <div class="col-md-9">
-        <input class="form-check-input" data-type="bsm" name="hydrant" id="hydrant" type="checkbox" value="true">
+        <input class="form-check-input" name="hydrant" id="hydrant" type="checkbox" value="true">
         <label class="form-check-label pe-2" for="hydrant">Hydrant</label>
-        <input class="form-check-input" data-type="bsm" name="sprinkler" id="sprinkler" type="checkbox" value="true">
+        <input class="form-check-input" name="sprinkler" id="sprinkler" type="checkbox" value="true">
         <label class="form-check-label pe-2" for="sprinkler">Sprinkler</label>
-        <input class="form-check-input" data-type="bsm" name="alaram" id="alaram" type="checkbox" value="true">
+        <input class="form-check-input" name="alaram" id="alaram" type="checkbox" value="true">
         <label class="form-check-label pe-2" for="alaram">Alaram</label>
-        <input class="form-check-input" data-type="bsm" name="interkom" id="interkom" type="checkbox" value="true">
+        <input class="form-check-input" name="interkom" id="interkom" type="checkbox" value="true">
         <label class="form-check-label pe-2" for="interkom">Interkom</label>
     </div>
 </div>
@@ -221,9 +259,9 @@
 <div class="row">
     <label class="form-label col-md-3">Video Interkom</label>
     <div class="col-md-3">
-        <input class="form-check-input" name="luas_lantai_interkom" id="luas_intrkom" type="radio" value="luas">
+        <input class="form-check-input" name="luas_intrkom" id="luas_intrkom" type="radio" value="luas">
         <label class="form-check-label pe-2" for="luas_intrkom">Luas m<sup>2</sup></label>
-        <input class="form-check-input" name="luas_lantai_interkom" id="lantai_interkom" type="radio" value="lantai">
+        <input class="form-check-input" name="lantai_interkom" id="lantai_interkom" type="radio" value="lantai">
         <label class="form-check-label pe-2" for="lantai_interkom">Jml. Lantai</label>
     </div>
     <div class="col-md-1">
@@ -234,9 +272,9 @@
 <div class="row">
     <label class="form-label col-md-3">MATV</label>
     <div class="col-md-3">
-        <input class="form-check-input" name="luas_lantai_matv" id="luas_matv" type="radio" value="luas">
+        <input class="form-check-input" name="luas_matv" id="luas_matv" type="radio" value="luas">
         <label class="form-check-label pe-2" for="luas_matv">Luas m<sup>2</sup></label>
-        <input class="form-check-input" name="luas_lantai_matv" id="lantai_matv" type="radio" value="lantai">
+        <input class="form-check-input" name="lantai_matv" id="lantai_matv" type="radio" value="lantai">
         <label class="form-check-label pe-2" for="lantai_matv">Jml. Lantai</label>
     </div>
     <div class="col-md-1">
@@ -247,9 +285,9 @@
 <div class="row">
     <label class="form-label col-md-3">CCTV</label>
     <div class="col-md-3">
-        <input class="form-check-input" name="luas_lantai_cctv" id="luas_cctv" type="radio" value="luas">
+        <input class="form-check-input" name="luas_cctv" id="luas_cctv" type="radio" value="luas">
         <label class="form-check-label pe-2" for="luas_cctv">Luas m<sup>2</sup></label>
-        <input class="form-check-input" name="luas_lantai_cctv" id="lantai_cctv" type="radio" value="lantai">
+        <input class="form-check-input" name="lantai_cctv" id="lantai_cctv" type="radio" value="lantai">
         <label class="form-check-label pe-2" for="lantai_cctv">Jml. Lantai</label>
     </div>
     <div class="col-md-1">
@@ -265,10 +303,10 @@
     </div>
     <label class="form-label col-md-1">Finishing</label>
     <div class="col-md-4">
-        <input class="form-check-input" name="finsihing_kolam" id="luas_cctv" type="radio" value="plester">
-        <label class="form-check-label pe-2" for="luas_cctv">Diplester</label>
-        <input class="form-check-input" name="finsihing_kolam" id="lantai_cctv" type="radio" value="pelapis">
-        <label class="form-check-label pe-2" for="lantai_cctv">Dengan Pelapis</label>
+        <select name="kolam_akhir" id="kolam_akhir" class="form-select form-select-sm">
+            <option value="1">Diplester</option>
+            <option value="2">Diplester</option>
+        </select>
     </div>
 </div>
 
@@ -284,7 +322,7 @@
             </thead>
             <tbody>
                 <tr>
-                    <td>
+                    <td class="fs-6">
                         Beton
                     </td>
                     <td>
@@ -295,7 +333,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <td>
+                    <td class="fs-6">
                         Aspal
                     </td>
                     <td>
@@ -306,7 +344,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <td>
+                    <td class="fs-6">
                         Tanah Liat
                     </td>
                     <td>

@@ -9,8 +9,8 @@
     </div>
     <label class="form-label fs-6 col-md-1">NOP</label>
     <div class="col-md-3">
-        <input type="text" class="form-control form-control-sm" name="nop" id="nop">
-    </div>
+        <input type="text" class="form-control form-control-sm" name="nop" id="nop" data-format="**.**.***.***.***.****.*" data-mask="xx.xx.xxx.xxx.xxx.xxxx.x">
+    </div> 
 </div>
 
 <div class="row">
@@ -29,7 +29,7 @@
     <div class="col-md-3">
         <select name="kd_jpb" id="kd_jpb" class="form-select form-select-sm">
             @foreach ($jpbs as $jpb)
-                <option value="{{ $jpb->id }}">{{ $jpb->kd_jpb .' || '. $jpb->nama_jpb }}</option>
+                <option value="{{ $jpb->kd_jpb }}">{{ $jpb->kd_jpb .' || '. $jpb->nama_jpb }}</option>
             @endforeach
         </select>
     </div>
@@ -53,11 +53,11 @@
     </div>
     <label class="form-label fs-6 col-md-1">RT</label>
     <div class="col-md-1">
-        <input type="text" class="form-control form-control-sm" name="rt_op" id="rt_op">
+        <input type="text" class="form-control form-control-sm text-right" name="rt_op" id="rt_op" maxlength="3" placeholder="000">
     </div>
     <label class="form-label fs-6 col-md-1">RW</label>
     <div class="col-md-1">
-        <input type="text" class="form-control form-control-sm" name="rw_op" id="rw_op">
+        <input type="text" class="form-control form-control-sm text-right" name="rw_op" id="rw_op" maxlength="2" placeholder="00">
     </div>
 </div>
 
@@ -74,22 +74,22 @@
 <div class="row">
     <label class="form-label fs-6 col-md-3">Tahun Selesai Dibangun</label>
     <div class="col-md-1">
-        <input type="text" class="form-control form-control-sm" name="thn_bangun" id="thn_bangun">
+        <input type="text" class="form-control form-control-sm text-right" name="thn_bangun" id="thn_bangun">
     </div>
     <label class="form-label fs-6 col-md-3">Tahun Renovasi</label>
     <div class="col-md-1">
-        <input type="text" class="form-control form-control-sm" name="thn_renov" id="thn_renov">
+        <input type="text" class="form-control form-control-sm text-right" name="thn_renov" id="thn_renov">
     </div>
 </div>
 
 <div class="row">
-    <label class="form-label fs-6 col-md-3">Jml Lanatai Bangunan</label>
+    <label class="form-label fs-6 col-md-3">Jml Lantai Bangunan</label>
     <div class="col-md-1">
         <input type="text" class="form-control form-control-sm" name="jml_lantai" id="jml_lantai">
     </div>
-    <label class="form-label fs-6 col-md-3">Jml Lanatai Basement</label>
+    <label class="form-label fs-6 col-md-3">Jml Lantai Basement</label>
     <div class="col-md-1">
-        <input type="text" class="form-control form-control-sm" name="nop" id="nop">
+        <input type="text" class="form-control form-control-sm" name="jml_basement" id="jml_basement">
     </div>
 </div>
 

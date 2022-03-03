@@ -11,7 +11,7 @@ class RefJpb extends Model
 
     protected $table = 'ref_jpb';
     protected $fillable = [
-        'kd_jbp',
+        'kd_jpb',
         'nama_jpb'
     ];
 }

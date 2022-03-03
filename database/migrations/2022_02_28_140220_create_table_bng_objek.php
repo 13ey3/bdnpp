@@ -16,6 +16,7 @@ class CreateTableBngObjek extends Migration
         Schema::create('bangunan_objek', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('objek_id');
+            $table->foreignId('user_id')->constrained('users')->onUpdate('cascade');
             $table->integer('no_bng');
             $table->float('nilia_bng', 12)->nullable();
             $table->char('kd_jpb', 2);

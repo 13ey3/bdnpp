@@ -70,7 +70,6 @@
 @push('scripts')
     <script>
         $(document).ready(function() {
-
             // Step show event
             $("#smartwizard").on("showStep", function(e, anchorObject, stepNumber, stepDirection, stepPosition) {
                 $("#prev-btn").removeClass('disabled');
@@ -93,12 +92,15 @@
                 theme: 'arrows',
                 enableURLhash: false,
                 transition: {
-                    animation: 'slide-horizontal', // Effect on navigation, none/fade/slide-horizontal/slide-vertical/slide-swing
+                    animation: 'slide-horizontal',
                 },
                 toolbarSettings: {
                     showNextButton: false, // show/hide a Next button
                     showPreviousButton: false, // show/hide a Previous button
-                }
+                },
+                keyboardSettings: {
+                    keyNavigation: false
+                },
             });
 
             // External Button Events
@@ -139,5 +141,39 @@
                 return true;
             });
         });
+
+        $('#jml_basement').on('blur', (e) => {
+            if (e.currentTarget.value > 0) {
+                enableDisableBasement(false);
+            } else {
+                enableDisableBasement(true);
+            }
+        });
+
+        $('#jml_lantai').on('blur', (e) =>{
+            if (e.currentTarget.value > 1) {
+                stairEnableDisable(false);
+            } else {
+                stairEnableDisable(true);
+            }
+        })
+
+        function stairEnableDisable(status) {
+            let elementBasement = document.querySelectorAll('input[data-type="stair"]');
+
+            elementBasement.forEach(bsm => {
+                bsm.readOnly = status;
+            });
+        }
+
+        function enableDisableBasement(status) {
+            let elementBasement = document.querySelectorAll('input[data-type="bsm"]');
+            
+            elementBasement.forEach(bsm => {
+                bsm.disabled = status;
+            });
+        }
+        enableDisableBasement(true)
+        stairEnableDisable(true)
     </script>
 @endpush
