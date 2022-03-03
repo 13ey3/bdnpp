@@ -146,7 +146,7 @@
                 <div class="row mb-2">
                     <div class="text-center">
                         <img class="img-thumbnail" id="logoImg"
-                            src="{{ is_null($pemda->logo_pemda) ? asset('/images/logo-default.png') : asset('uploads/' . $pemda->logo_pemda) }}"
+                            src="{{ is_null($pemda) ? asset('/images/logo-default.png') : is_null($pemda->logo_pemda) ? asset('/images/logo-default.png') : asset('uploads/' . $pemda->logo_pemda) }}"
                             alt="" style="width: 200px;">
                     </div>
                 </div>
